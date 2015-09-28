@@ -162,7 +162,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
         fMainForm.addCommand(getCmdAbout());
         fMainForm.addCommand(getCmdExit());
         fMainForm.setCommandListener(this);
-        cgClassType = new ChoiceGroup("\u0422\u0438\u043F \u043A\u043B\u0430\u0441\u0441\u0430", Choice.POPUP);
+        cgClassType = new ChoiceGroup("Class type", Choice.POPUP);
         cgClassType.append("MIDlet", null);
         cgClassType.append("Canvas", null);
         cgClassType.append("Thread", null);
@@ -174,25 +174,25 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
                   {
                     true, false, false, false, false, false
                   });
-        tfName = new TextField("\u0418\u043C\u044F \u043F\u0440\u043E\u0435\u043A\u0442\u0430", "Main", 32, TextField.ANY);
-        cgOptions = new ChoiceGroup("\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B", Choice.MULTIPLE);
-        cgOptions.append("\u041F\u043E\u043B\u043D\u044B\u0439 \u044D\u043A\u0440\u0430\u043D", null);
+        tfName = new TextField("Project name", "Main", 32, TextField.ANY);
+        cgOptions = new ChoiceGroup("Options", Choice.MULTIPLE);
+        cgOptions.append("Full screen", null);
         cgOptions.setFitPolicy(Choice.TEXT_WRAP_DEFAULT);
         cgOptions.setSelectedFlags(new boolean[]
                   {
                     false
                   });
-        newProjectForm = new Form("\u041D\u043E\u0432\u044B\u0439 \u043F\u0440\u043E\u0435\u043A\u0442", new Item[]
+        newProjectForm = new Form("New project", new Item[]
                   {
                     tfName, cgClassType, cgOptions
                   });
         newProjectForm.addCommand(getCmdConfirm());
         newProjectForm.addCommand(getCmdBack());
         newProjectForm.setCommandListener(this);
-        lAdd = new List("\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C", Choice.IMPLICIT);
-        lAdd.append("\u041E\u0442\u043E\u0431\u0440\u0430\u0436\u0430\u0435\u043C\u044B\u0439 \u043E\u0431\u044A\u0435\u043A\u0442", null);
-        lAdd.append("\u041A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442", null);
-        lAdd.append("\u041F\u0440\u043E\u0447\u0435\u0435", null);
+        lAdd = new List("Add", Choice.IMPLICIT);
+        lAdd.append("display object", null);
+        lAdd.append("component", null);
+        lAdd.append("other", null);
         lAdd.addCommand(getCmdBack());
         lAdd.setCommandListener(this);
         lAdd.setSelectedFlags(new boolean[]
@@ -200,11 +200,11 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
                     false, false, false
                   });
         lAddDisplayable = new List("Displayable", Choice.IMPLICIT);
-        lAddDisplayable.append("\u0424\u043E\u0440\u043C\u0430", null);
+        lAddDisplayable.append("Shape", null);
         lAddDisplayable.append("Canvas", null);
-        lAddDisplayable.append("\u041B\u0438\u0441\u0442", null);
-        lAddDisplayable.append("\u0421\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435", null);
-        lAddDisplayable.append("\u041F\u043E\u043B\u0435 \u0432\u0432\u043E\u0434\u0430", null);
+        lAddDisplayable.append("Letter", null);
+        lAddDisplayable.append("Message", null);
+        lAddDisplayable.append("Entry field", null);
         lAddDisplayable.addCommand(getCmdBack());
         lAddDisplayable.setCommandListener(this);
         lAddDisplayable.setSelectedFlags(new boolean[]
@@ -212,27 +212,27 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
                     false, false, false, false, false
                   });
         lAddItem = new List("Items", Choice.IMPLICIT);
-        lAddItem.append("\u0413\u0440\u0443\u043F\u043F\u0430 \u0432\u044B\u0431\u043E\u0440\u0430", null);
-        lAddItem.append("\u041F\u043E\u043B\u0435 \u0434\u0430\u0442\u044B", null);
-        lAddItem.append("\u0428\u043A\u0430\u043B\u0430", null);
-        lAddItem.append("\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435", null);
-        lAddItem.append("\u0420\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C", null);
-        lAddItem.append("\u0421\u0442\u0440\u043E\u043A\u0430", null);
-        lAddItem.append("\u041F\u043E\u043B\u0435 \u0432\u0432\u043E\u0434\u0430", null);
+        lAddItem.append("Group selection", null);
+        lAddItem.append("Date field", null);
+        lAddItem.append("Scale", null);
+        lAddItem.append("Image", null);
+        lAddItem.append("Separator", null);
+        lAddItem.append("String", null);
+        lAddItem.append("Entry field", null);
         lAddItem.addCommand(getCmdBack());
         lAddItem.setCommandListener(this);
         lAddItem.setSelectedFlags(new boolean[]
                   {
                     false, false, false, false, false, false, false
                   });
-        lAddOther = new List("\u041F\u0440\u043E\u0447\u0435\u0435", Choice.IMPLICIT);
-        lAddOther.append("\u041A\u043E\u043C\u0430\u043D\u0434\u0430", null);
-        lAddOther.append("\u0411\u0435\u0433\u0443\u0449\u0430\u044F \u0441\u0442\u0440\u043E\u043A\u0430", null);
-        lAddOther.append("\u0422\u0440\u0435\u0434 (\u043C\u043D\u043E\u0433\u043E\u043F\u043E\u0442\u043E\u0447\u043D\u043E\u0441\u0442\u044C)", null);
-        lAddOther.append("\u041C\u0435\u0442\u043E\u0434", null);
-        lAddOther.append("\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435", null);
-        lAddOther.append("\u0421\u0442\u0440\u043E\u043A\u0430", null);
-        lAddOther.append("\u041F\u0435\u0440\u0435\u043C\u0435\u043D\u043D\u0430\u044F", null);
+        lAddOther = new List("Other", Choice.IMPLICIT);
+        lAddOther.append("Command", null);
+        lAddOther.append("Ticker", null);
+        lAddOther.append("Thread (multithread)", null);
+        lAddOther.append("Method", null);
+        lAddOther.append("Image", null);
+        lAddOther.append("String", null);
+        lAddOther.append("Variable", null);
         lAddOther.addCommand(getCmdBack());
         lAddOther.setCommandListener(this);
         lAddOther.setSelectedFlags(new boolean[]
@@ -248,15 +248,15 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
         tbEditor.setCommandListener(this);
         tbEditor.setTitle("VisualStudioME");
         tbEditor.setCommandListener(this);
-        lObjects = new List("\u041E\u0431\u044A\u0435\u043A\u0442\u044B", Choice.IMPLICIT);
+        lObjects = new List("Objects", Choice.IMPLICIT);
         lObjects.addCommand(getCmdBack());
         lObjects.addCommand(getCmdEdit());
         lObjects.setCommandListener(this);
         lObjects.setSelectCommand(getCmdEdit());
-        lOptions = new List("\u041E\u043F\u0446\u0438\u0438", Choice.IMPLICIT);
-        lOptions.append("\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C", null);
-        lOptions.append("\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0435", null);
-        lOptions.append("\u0412\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u044F", null);
+        lOptions = new List("Options", Choice.IMPLICIT);
+        lOptions.append("Editing", null);
+        lOptions.append("Add expression", null);
+        lOptions.append("Experssions", null);
         lOptions.addCommand(getCmdBack());
         lOptions.setCommandListener(this);
         lOptions.setFitPolicy(Choice.TEXT_WRAP_DEFAULT);
@@ -264,26 +264,26 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
                   {
                     false, false, false
                   });
-        tType = new TextField("\u0422\u0438\u043F", null, 32, TextField.ANY);
-        tName = new TextField("\u0418\u043C\u044F", null, 32, TextField.ANY);
-        tInit = new TextField("\u0421\u0442\u0440\u043E\u043A\u0430 \u0438\u043D\u0438\u0446\u0438\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438", null, 4096, TextField.ANY);
-        fEdit = new Form("\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C", new Item[]
+        tType = new TextField("Type", null, 32, TextField.ANY);
+        tName = new TextField("Name", null, 32, TextField.ANY);
+        tInit = new TextField("String initailization", null, 4096, TextField.ANY);
+        fEdit = new Form("Edit", new Item[]
                   {
                     tType, tName, tInit
                   });
         fEdit.addCommand(getCmdBack());
         fEdit.addCommand(getCmdConfirm());
         fEdit.setCommandListener(this);
-        lMethods = new List("\u041C\u0435\u0442\u043E\u0434\u044B", Choice.IMPLICIT);
+        lMethods = new List("Methods", Choice.IMPLICIT);
         lMethods.addCommand(getCmdBack());
         lMethods.addCommand(getCmdOptions());
         lMethods.setCommandListener(this);
         lMethods.setSelectCommand(getCmdOptions());
-        tbEdit = new TextBox("\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C", null, 1024, TextField.ANY);
+        tbEdit = new TextBox("Edit", null, 1024, TextField.ANY);
         tbEdit.addCommand(getCmdBack());
         tbEdit.addCommand(getCmdConfirm());
         tbEdit.setCommandListener(this);
-        fMethodEdit = new Form("\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C", new Item[]
+        fMethodEdit = new Form("Edit method", new Item[]
                   {
                   });
         fMethodEdit.addCommand(getCmdBack());
@@ -293,16 +293,16 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
         tbAddExpression.addCommand(getCmdBack());
         tbAddExpression.addCommand(getCmdConfirm());
         tbAddExpression.setCommandListener(this);
-        lStatements = new List("\u0412\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u044F", Choice.IMPLICIT);
+        lStatements = new List("Statements", Choice.IMPLICIT);
         lStatements.addCommand(getCmdBack());
         lStatements.addCommand(getCmdConfirm());
         lStatements.setCommandListener(this);
         lStatements.setSelectCommand(getCmdConfirm());
-        tbSave = new TextBox("\u041F\u0430\u043F\u043A\u0430 \u0434\u043B\u044F \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F", "/e:/other/java/s/", 100, TextField.ANY);
+        tbSave = new TextBox("Folder to save", "/e:/other/java/s/", 100, TextField.ANY);
         tbSave.addCommand(getCmdSave());
         tbSave.addCommand(getCmdBack());
         tbSave.setCommandListener(this);
-        fAbout = new Form("\u041E \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0435", new Item[]
+        fAbout = new Form("About", new Item[]
                   {
                     getIiAbout(), getSiAbout()
                   });
@@ -312,7 +312,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
         tbStatement.addCommand(getCmdConfirm());
         tbStatement.addCommand(getCmdBack());
         tbStatement.setCommandListener(this);
-        lAddExpression = new List("\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0435", Choice.IMPLICIT);
+        lAddExpression = new List("Add expresion", Choice.IMPLICIT);
         lAddExpression.append("if", null);
         lAddExpression.append("for(;;){}", null);
         lAddExpression.append("while(){}", null);
@@ -327,8 +327,8 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
         lAddExpression.addCommand(getCmdBack());
         lAddExpression.setCommandListener(this);
         lAddExpression.setSelectCommand(getCmdConfirm());
-        gProcess = new Gauge("\u041F\u0440\u043E\u0446\u0435\u0441\u0441", false, 100, 0);
-        fWait = new Form("\u0413\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F \u0438\u0441\u0445\u043E\u0434\u043D\u0438\u043A\u0430", new Item[]
+        gProcess = new Gauge("Process", false, 100, 0);
+        fWait = new Form("Generate source code", new Item[]
                   {
                     gProcess
                   });
@@ -589,8 +589,8 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
                 cg.setGauge(gProcess);
                 //#ifndef LITE
                 fMainForm.clear();
-                fMainForm.append(new FlowItem(fMainForm.flow, "Переменные", cg.getFieldsHeaders(), 5, 5));
-                fMainForm.append(new FlowItem(fMainForm.flow, "Методы", cg.getMethodsHeaders(), 5, 100));
+                fMainForm.append(new FlowItem(fMainForm.flow, "Variables", cg.getFieldsHeaders(), 5, 5));
+                fMainForm.append(new FlowItem(fMainForm.flow, "Methods", cg.getMethodsHeaders(), 5, 100));
                 fMainForm.repaint();
                 //#endif
 
@@ -672,11 +672,11 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
         // enter pre-action user code here
         String __selectedString = lAdd.getString(lAdd.getSelectedIndex());
         if (__selectedString != null)
-            if (__selectedString.equals("\u041E\u0442\u043E\u0431\u0440\u0430\u0436\u0430\u0435\u043C\u044B\u0439 \u043E\u0431\u044A\u0435\u043A\u0442"))
+            if (__selectedString.equals("Displayable"))
                 switchDisplayable(null, lAddDisplayable);
-            else if (__selectedString.equals("\u041A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442"))
+            else if (__selectedString.equals("Component"))
                 switchDisplayable(null, lAddItem);
-            else if (__selectedString.equals("\u041F\u0440\u043E\u0447\u0435\u0435"))
+            else if (__selectedString.equals("Other"))
                 switchDisplayable(null, lAddOther);
         // enter post-action user code here
       }
@@ -689,15 +689,15 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
         // enter pre-action user code here
         String __selectedString = lAddDisplayable.getString(lAddDisplayable.getSelectedIndex());
         if (__selectedString != null)
-            if (__selectedString.equals("\u0424\u043E\u0440\u043C\u0430"))
+            if (__selectedString.equals("Shape"))
                 adder.add(Adder.FORM);
             else if (__selectedString.equals("Canvas"))
                 adder.add(Adder.CANVAS);
-            else if (__selectedString.equals("\u041B\u0438\u0441\u0442"))
+            else if (__selectedString.equals("Lettet"))
                 adder.add(Adder.LIST);
-            else if (__selectedString.equals("\u0421\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435"))
+            else if (__selectedString.equals("Message"))
                 adder.add(Adder.ALERT);
-            else if (__selectedString.equals("\u041F\u043E\u043B\u0435 \u0432\u0432\u043E\u0434\u0430"))
+            else if (__selectedString.equals("Entry field"))
                 adder.add(Adder.TEXTBOX);
         // enter post-action user code here
       }
@@ -707,22 +707,24 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
      */
     public void lAddItemAction()
       {
+
+          
         // enter pre-action user code here
         String __selectedString = lAddItem.getString(lAddItem.getSelectedIndex());
         if (__selectedString != null)
-            if (__selectedString.equals("\u0413\u0440\u0443\u043F\u043F\u0430 \u0432\u044B\u0431\u043E\u0440\u0430"))
+            if (__selectedString.equals("Group selection"))
                 adder.add(Adder.CHOICEGROUP);
-            else if (__selectedString.equals("\u041F\u043E\u043B\u0435 \u0434\u0430\u0442\u044B"))
+            else if (__selectedString.equals("Date field"))
                 adder.add(Adder.DATEFIELD);
-            else if (__selectedString.equals("\u0428\u043A\u0430\u043B\u0430"))
+            else if (__selectedString.equals("Scale"))
                 adder.add(Adder.GAUGE);
-            else if (__selectedString.equals("\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435"))
+            else if (__selectedString.equals("Image"))
                 adder.add(Adder.IMAGEITEM);
-            else if (__selectedString.equals("\u0420\u0430\u0437\u0434\u0435\u043B\u0438\u0442\u0435\u043B\u044C"))
+            else if (__selectedString.equals("Separator"))
                 adder.add(Adder.SPACER);
-            else if (__selectedString.equals("\u0421\u0442\u0440\u043E\u043A\u0430"))
+            else if (__selectedString.equals("String"))
                 adder.add(Adder.STRINGITEM);
-            else if (__selectedString.equals("\u041F\u043E\u043B\u0435 \u0432\u0432\u043E\u0434\u0430"))
+            else if (__selectedString.equals("Entry field"))
                 adder.add(Adder.TEXTFIELD);
         // enter post-action user code here
       }
@@ -735,19 +737,19 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
         // enter pre-action user code here
         String __selectedString = lAddOther.getString(lAddOther.getSelectedIndex());
         if (__selectedString != null)
-            if (__selectedString.equals("\u041A\u043E\u043C\u0430\u043D\u0434\u0430"))
+            if (__selectedString.equals("Command"))
                 adder.add(Adder.COMMAND);
-            else if (__selectedString.equals("\u0411\u0435\u0433\u0443\u0449\u0430\u044F \u0441\u0442\u0440\u043E\u043A\u0430"))
+            else if (__selectedString.equals("Ticker"))
                 adder.add(Adder.TICKER);
-            else if (__selectedString.equals("\u0422\u0440\u0435\u0434 (\u043C\u043D\u043E\u0433\u043E\u043F\u043E\u0442\u043E\u0447\u043D\u043E\u0441\u0442\u044C)"))
+            else if (__selectedString.equals("Thread (multithread)"))
                 adder.add(Adder.THREAD);
-            else if (__selectedString.equals("\u041C\u0435\u0442\u043E\u0434"))
+            else if (__selectedString.equals("Method"))
                 adder.add(Adder.METHOD);
-            else if (__selectedString.equals("\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435"))
+            else if (__selectedString.equals("Image"))
                 adder.add(Adder.IMAGE);
-            else if (__selectedString.equals("\u0421\u0442\u0440\u043E\u043A\u0430"))
+            else if (__selectedString.equals("String"))
                 adder.add(Adder.STRING);
-            else if (__selectedString.equals("\u041F\u0435\u0440\u0435\u043C\u0435\u043D\u043D\u0430\u044F"))
+            else if (__selectedString.equals("Variable"))
                 adder.add(Adder.FIELD);
         // enter post-action user code here
       }
@@ -770,7 +772,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
         // enter pre-action user code here
         String __selectedString = lOptions.getString(lOptions.getSelectedIndex());
         if (__selectedString != null)
-            if (__selectedString.equals("\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C"))
+            if (__selectedString.equals("Editing"))
               {
                 Method f = cg.getMethod(lMethods.getSelectedIndex());
                 tfMethodType.setString(f.getType().toString());
@@ -779,9 +781,9 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
                 switchDisplayable(null, fMethodEdit);
 
               }
-            else if (__selectedString.equals("\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u0435"))
+            else if (__selectedString.equals("Add Expression"))
                 switchDisplayable(null, lAddExpression);
-            else if (__selectedString.equals("\u0412\u044B\u0440\u0430\u0436\u0435\u043D\u0438\u044F"))
+            else if (__selectedString.equals("Expresssion"))
               {
                 Method f = cg.getMethod(lMethods.getSelectedIndex());
                 Statement[] s = f.getStatements();
@@ -880,7 +882,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
         if (siAbout == null)
           {
 
-            siAbout = new StringItem("\u041E \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0435 ", "\u0410\u0432\u0442\u043E\u0440 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B - P@bloid. \nVisualStudio Micro Edition - \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u043D\u0430 \u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0435 J2ME \u0434\u043B\u044F \u0432\u0438\u0437\u0443\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F Java-\u0438\u0441\u0445\u043E\u0434\u043D\u0438\u043E\u0432.", Item.PLAIN);
+            siAbout = new StringItem("About ", "Author - P@bloid. \nTranslate - wiktorek140.\nVisualStudio Micro Edition - application on J2ME platform for visual editing of Java-source.", Item.PLAIN);
             siAbout.setLayout(ImageItem.LAYOUT_CENTER | Item.LAYOUT_TOP | Item.LAYOUT_BOTTOM | Item.LAYOUT_VCENTER | Item.LAYOUT_2);
             siAbout.setFont(fntAbout);
 
@@ -906,7 +908,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdNewProject()
       {
         if (cmdNewProject == null)
-            cmdNewProject = new Command("\u041D\u043E\u0432\u044B\u0439 \u043F\u0440\u043E\u0435\u043A\u0442", Command.OK, 3);
+            cmdNewProject = new Command("New project", Command.OK, 3);
         return cmdNewProject;
       }
 
@@ -917,7 +919,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdExit()
       {
         if (cmdExit == null)
-            cmdExit = new Command("\u0412\u044B\u0445\u043E\u0434", Command.EXIT, 10);
+            cmdExit = new Command("Exit", Command.EXIT, 10);
         return cmdExit;
       }
 
@@ -928,7 +930,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdAbout()
       {
         if (cmdAbout == null)
-            cmdAbout = new Command("\u041E \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0435", Command.HELP, 5);
+            cmdAbout = new Command("About", Command.HELP, 5);
         return cmdAbout;
       }
 
@@ -939,7 +941,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdConfirm()
       {
         if (cmdConfirm == null)
-            cmdConfirm = new Command("O\u043A", Command.OK, 0);
+            cmdConfirm = new Command("Ok", Command.OK, 0);
         return cmdConfirm;
       }
 
@@ -950,7 +952,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdBack()
       {
         if (cmdBack == null)
-            cmdBack = new Command("\u041D\u0430\u0437\u0430\u0434", Command.BACK, 0);
+            cmdBack = new Command("Back", Command.BACK, 0);
         return cmdBack;
       }
 
@@ -961,7 +963,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdSettings()
       {
         if (cmdSettings == null)
-            cmdSettings = new Command("\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438", Command.SCREEN, 4);
+            cmdSettings = new Command("Settings", Command.SCREEN, 4);
         return cmdSettings;
       }
 
@@ -972,7 +974,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdEdit()
       {
         if (cmdEdit == null)
-            cmdEdit = new Command("\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C", Command.SCREEN, 0);
+            cmdEdit = new Command("Edit", Command.SCREEN, 0);
         return cmdEdit;
       }
 
@@ -983,7 +985,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdSave()
       {
         if (cmdSave == null)
-            cmdSave = new Command("\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C", Command.SCREEN, 0);
+            cmdSave = new Command("Save", Command.SCREEN, 0);
         return cmdSave;
       }
 
@@ -994,7 +996,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdOptions()
       {
         if (cmdOptions == null)
-            cmdOptions = new Command("\u0414\u0435\u0439\u0441\u0442\u0432\u0438\u044F", Command.SCREEN, 0);
+            cmdOptions = new Command("Options", Command.SCREEN, 0);
         return cmdOptions;
       }
 
@@ -1005,7 +1007,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdAdd()
       {
         if (cmdAdd == null)
-            cmdAdd = new Command("\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C", Command.OK, 0);
+            cmdAdd = new Command("Add", Command.OK, 0);
         return cmdAdd;
       }
 
@@ -1016,7 +1018,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdViewCode()
       {
         if (cmdViewCode == null)
-            cmdViewCode = new Command("\u041A\u043E\u0434", Command.SCREEN, 2);
+            cmdViewCode = new Command("Code", Command.SCREEN, 2);
         return cmdViewCode;
       }
 
@@ -1027,7 +1029,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdObjects()
       {
         if (cmdObjects == null)
-            cmdObjects = new Command("\u041E\u0431\u044A\u0435\u043A\u0442\u044B", Command.OK, 1);
+            cmdObjects = new Command("Objects", Command.OK, 1);
         return cmdObjects;
       }
 
@@ -1038,7 +1040,7 @@ public class VisualStudioME extends MIDlet implements CommandListener, ItemState
     public Command getCmdMethods()
       {
         if (cmdMethods == null)
-            cmdMethods = new Command("\u041C\u0435\u0442\u043E\u0434\u044B", Command.SCREEN, 1);
+            cmdMethods = new Command("Methods", Command.SCREEN, 1);
         return cmdMethods;
       }
 
